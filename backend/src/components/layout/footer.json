@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_layout_footers",
+  "info": {
+    "displayName": "Footer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "logoText": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.link"
+    },
+    "footerText": {
+      "type": "text"
+    },
+    "socialLink": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.link"
+    },
+    "footerCTA": {
+      "displayName": "footerCTA",
+      "type": "component",
+      "repeatable": false,
+      "component": "components.footer-cta"
+    },
+    "copyright": {
+      "type": "text"
+    },
+    "footerMenu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.footer-menu"
+    }
+  }
+}

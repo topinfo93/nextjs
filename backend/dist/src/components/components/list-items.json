@@ -1,0 +1,19 @@
+{
+    "collectionName": "components_components_list_items",
+    "info": {
+        "displayName": "listItems"
+    },
+    "options": {},
+    "attributes": {
+        "link": {
+            "type": "string"
+        },
+        "image": {
+            "allowedTypes": [
+                "images"
+            ],
+            "type": "media",
+            "multiple": false
+        }
+    }
+}

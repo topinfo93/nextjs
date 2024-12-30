@@ -1,0 +1,46 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_pages",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Home Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hero": {
+      "displayName": "Hero Homepage",
+      "type": "component",
+      "repeatable": false,
+      "component": "components.hero-homepage",
+      "required": false
+    },
+    "animation": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.home-animation"
+    },
+    "partner": {
+      "displayName": "partner",
+      "type": "component",
+      "repeatable": false,
+      "component": "components.partner"
+    },
+    "caseStudies": {
+      "displayName": "caseStudies",
+      "type": "component",
+      "repeatable": false,
+      "component": "components.case-studies"
+    },
+    "culture": {
+      "displayName": "Culture",
+      "type": "component",
+      "repeatable": false,
+      "component": "components.culture"
+    }
+  }
+}
