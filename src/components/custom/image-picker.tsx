@@ -31,12 +31,13 @@ function ImagePreview({ dataUrl }: { readonly dataUrl: string }) {
   );
 }
 
+// Update fileInput prop to allow RefObject<HTMLInputElement | null>
 function ImageCard({
   dataUrl,
   fileInput,
 }: {
   readonly dataUrl: string;
-  readonly fileInput: React.RefObject<HTMLInputElement>;
+  readonly fileInput: React.RefObject<HTMLInputElement | null>;
 }) {
   const imagePreview = dataUrl ? (
     <ImagePreview dataUrl={dataUrl} />
@@ -64,7 +65,7 @@ export default function ImagePicker({
   label,
   defaultValue,
 }: Readonly<ImagePickerProps>) {
-  const fileInput = useRef<HTMLInputElement>(null);
+  const fileInput = useRef<HTMLInputElement | null>(null); // Allow null in the ref
   const [dataUrl, setDataUrl] = useState<string | null>(defaultValue ?? null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {

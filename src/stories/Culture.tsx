@@ -1,17 +1,17 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+// import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { getStrapiMedia } from "@/lib/utils";
 
-interface Box {
-    title: string;
-    description: string;
-    image: {
-        url: string;
-        alt: string;
-    };
-}
+// interface Box {
+//     title: string;
+//     description: string;
+//     image: {
+//         url: string;
+//         alt: string;
+//     };
+// }
 
 
 export interface CultureProps {
@@ -23,7 +23,10 @@ export interface CultureProps {
             isExternal: boolean;
             url: string;
         },
-        imageText: Box[]
+        image: {
+            url: string;
+            alt: string;
+        },
     };
 }
 
@@ -34,7 +37,7 @@ export const Culture = ({ data }: CultureProps) => {
         return <div>Error: Data is missing or invalid.</div>;
     }
 
-    console.log(data);
+    // console.log(data);
     const imageUrl = getStrapiMedia(
         data.image?.url
     );

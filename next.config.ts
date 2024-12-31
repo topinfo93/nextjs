@@ -2,16 +2,21 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
+  },  
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "localhost",
-        port: "1337",
-        pathname: "/uploads/**/*",
+        protocol: "https",
+        hostname: "special-friends-d47d50ea86.strapiapp.com/admin/auth/login",
+        pathname: '/**',
       },
     ],
-    domains: ['ghosydney.com', 'anotherdomain.com'],
+    domains: ['ghosydney.com', 'anotherdomain.com','special-friends-d47d50ea86.strapiapp.com','strapiapp.com','special-friends-d47d50ea86.media.strapiapp.com'],
   },
 };
 

@@ -7,6 +7,7 @@ import { getStrapiMedia } from "@/lib/utils";
 interface Box {
     title: string;
     description: string;
+    url: string;
     image: {
         url: string;
         alt: string;
@@ -37,16 +38,19 @@ export const CaseStudies = ({ data }: CaseStudiesProps) => {
     const [isLoaded, setIsLoaded] = useState(false); // State to track if the data is loaded
     const [dir, setDir] = useState('down'); // For handling scroll direction
 
-    // Handle scroll event to update card classes
+    
+
     useEffect(() => {
         // Scroll event listener
         const handleScroll = () => {
-            if (document.querySelector('.section-starts .card-items')) {
-                const cardItems = document.querySelector('.section-starts .card-items');
+            const cardItems = document.querySelector('.section-starts .card-items');
+            if (cardItems) {
+                // Cast cardItems to HTMLElement
+                const cardItemsElement = cardItems as HTMLElement;
                 const scrollTop = window.scrollY;
-
-                let lastScrollTop;
-
+    
+                let lastScrollTop = 0;
+    
                 // Handling scroll direction
                 if (scrollTop > lastScrollTop) {
                     setDir('down'); // Scroll down
@@ -54,21 +58,21 @@ export const CaseStudies = ({ data }: CaseStudiesProps) => {
                     setDir('up'); // Scroll up
                 }
                 lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Keep track of last scroll position
-
+    
                 // Card section logic
-                if (scrollTop < cardItems.offsetTop - window.innerHeight) {
+                if (scrollTop < cardItemsElement.offsetTop - window.innerHeight) {
                     document.querySelectorAll('.section-starts .card-items .card').forEach((card) => {
                         card.classList.remove('after-cards');
                         card.classList.add('before-cards');
                     });
-                } else if (scrollTop > cardItems.offsetTop + cardItems.offsetHeight + 300) {
+                } else if (scrollTop > cardItemsElement.offsetTop + cardItemsElement.offsetHeight + 300) {
                     document.querySelectorAll('.section-starts .card-items .card').forEach((card) => {
                         card.classList.add('after-cards');
                         card.classList.remove('before-cards');
                     });
                 }
-
-                if (scrollTop > cardItems.offsetTop - window.innerHeight && scrollTop < cardItems.offsetTop + cardItems.offsetHeight + 300) {
+    
+                if (scrollTop > cardItemsElement.offsetTop - window.innerHeight && scrollTop < cardItemsElement.offsetTop + cardItemsElement.offsetHeight + 300) {
                     if (dir === 'up') {
                         document.querySelectorAll('.section-starts .card-items .card').forEach((card, i) => {
                             setTimeout(() => {
@@ -85,28 +89,33 @@ export const CaseStudies = ({ data }: CaseStudiesProps) => {
                 }
             }
         };
-
+    
         // Initialize the scroll event listener
         window.addEventListener('scroll', handleScroll);
-
+    
         // Cleanup the event listener on component unmount
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, [dir]);
+    
+
+
+
+
 
     useEffect(() => {
         // This effect runs once the 'data' prop is available
-        if (data && data.cases) {
+        if (data && data.imageText) {
             setIsLoaded(true);
         }
     }, [data]);
 
     if (!isLoaded) {
-        return <p>Loading...</p>; // Render loading state until the data is loaded
+        return; // Render loading state until the data is loaded
     }
 
-    if (!data?.cases || data.cases.length === 0) {
+    if (!data?.imageText || data.imageText.length === 0) {
         return <p>No cases available</p>; // Handling case where no data is available
     }
 
@@ -120,12 +129,14 @@ export const CaseStudies = ({ data }: CaseStudiesProps) => {
 
 
                         <div className="card-items">
-                            {data.cases.map((card, index) => {
+                            {data.imageText.map((card, index) => {
                                 const imageUrl = getStrapiMedia(
-                                    card.cardThumb?.url
+                                    card.image?.url
                                 );
-                                const altText = card.cardThumb?.alt || 'Card image';
-
+                                const altText = card.image?.alt || 'Card image';
+                                if (!imageUrl) {
+                                    return null; 
+                                }
 
                                 return (
                                     <div key={index} className="card before-cards">

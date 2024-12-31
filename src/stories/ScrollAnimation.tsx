@@ -13,7 +13,6 @@ interface Award {
     };
 }
 
-
 export interface AnimProps {
     data: {
         title: string;
@@ -31,7 +30,16 @@ export interface AnimProps {
             },
             awards: Award[]; // List of awards
         },
-        animation: {}
+        animation: {
+            video: {
+                url: string;
+            };
+            gallery: any[];
+            deliverTitle: string;
+            deliverText1: string;
+            deliverText2: string;
+            deliverText3: string;
+        }
     };
 }
 
@@ -43,9 +51,9 @@ export const ScrollAnimation = ({ data }: AnimProps) => {
     if (!data) {
         return <div>Error: Data is missing or invalid.</div>;
     }
+    // const videoUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL || ''}${data.animation.video.url}`;
+    const videoUrl = data.animation.video.url;
 
-
-    const videoUrl = `${process.env.NEXT_PUBLIC_STRAPI_API_URL || ''}${data.animation.video.url}`;
     const gallery = data.animation.gallery;
 
     useEffect(() => {
@@ -72,7 +80,9 @@ export const ScrollAnimation = ({ data }: AnimProps) => {
     useEffect(() => {
         const handleScroll = () => {
             if (window.innerWidth <= 767) {
-                const imageGalleries = document.querySelector('.image-galleries');
+                // const imageGalleries = document.querySelector('.image-galleries');
+                const imageGalleries = document.querySelector('.your-selector') as HTMLElement;
+
                 const textBelowVideoScale = document.querySelector('.text-below-video-scale');
 
                 if (imageGalleries && textBelowVideoScale) {
@@ -157,7 +167,7 @@ export const ScrollAnimation = ({ data }: AnimProps) => {
                                 const imageUrl = getStrapiMedia(award.image?.url);
                                 if (index === 0) {
                                     return (
-                                        <div key={award.id || index} className="front-card card"> {/* Use award.id if available, else fallback to index */}
+                                        <div key={index} className="front-card card"> {/* Use award.id if available, else fallback to index */}
                                             <span className="card-title">{award.title}</span>
                                             <div className="card-content">
                                                 <p dangerouslySetInnerHTML={{ __html: award.description }} />
@@ -178,7 +188,7 @@ export const ScrollAnimation = ({ data }: AnimProps) => {
                                     );
                                     return (
 
-                                        <li key={award.id} className="item-awards-home" data-number={award.id}>
+                                        <li key={index} className="item-awards-home" data-number={index}>
                                             <div className="flipper-mobile" data-start_number={0}>
                                                 <div className="front-card card">
                                                     <span className="card-title">{award.title}</span>
@@ -239,7 +249,7 @@ export const ScrollAnimation = ({ data }: AnimProps) => {
 
                         preload="auto"
                         muted={true}
-                        loop="loop"
+                        loop={true}
                         src={videoUrl}
                     />
 
@@ -256,6 +266,9 @@ export const ScrollAnimation = ({ data }: AnimProps) => {
                                 const imageUrl = getStrapiMedia(
                                     image?.url
                                 );
+                                if (!imageUrl) {
+                                    return null; 
+                                }
 
                                 return (
                                     <li key={index} className={index % 2 === 0 ? 'right' : 'left'}>

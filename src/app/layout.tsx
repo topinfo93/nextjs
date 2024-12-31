@@ -4,8 +4,8 @@ import "./styles/main.scss";
 import { getGlobalPageMetadata } from "@/data/loaders";
 
 import { Toaster } from "@/components/ui/sonner";
-import { Header } from "../stories/header";
-import { Footer } from "../stories/footer";
+import { Header } from "@/stories/Header";
+import { Footer } from "@/stories/Footer";
 
 import Transition from "./transition";
 // import { Inter } from "next/font/google";

@@ -89,7 +89,9 @@ export const Header = () => {
             const section = document.querySelector(".section-intro-two");
             if (section) {
                 const windowTop = window.scrollY;
-                const sectionTop2 = section.offsetTop;
+                // const sectionTop2 = section.offsetTop;
+                const sectionTop2 = (section as HTMLElement).offsetTop;
+
 
                 // Check the scroll conditions and direction
                 if (windowTop > sectionTop2 - pointBanner && windowTop < sectionTop2 - 100 && dir === "down") {

@@ -46,9 +46,9 @@ export default function ScrollAnimation({ data }: AnimProps) {
                 <div className="intro-content">
                     <div className="text">
                         <h1 className="large-text">
-                            {data.data.hero.title}
+                            {data.hero.title}
                             <div className="cta">
-                                <a href={data.data.hero.cta.url}>
+                                <a href={data.hero.cta.url}>
                                     <div className="wrap-icon">
                                         <div className="icon">
                                             <svg
@@ -65,17 +65,17 @@ export default function ScrollAnimation({ data }: AnimProps) {
                                             </svg>
                                         </div>
                                     </div>
-                                    <div className="text-cta-dot">{data.data.hero.cta.text}</div>
+                                    <div className="text-cta-dot">{data.hero.cta.text}</div>
                                 </a>
                             </div>
                         </h1>
                         <div className="desc">
-                            {data.data.hero.description}
+                            {data.hero.description}
                         </div>
                         <div className="large-text only-mobile">
                             <div className="cta">
-                                <a href={data.data.hero.cta.url}>
-                                    <div className="text-cta-dot">{data.data.hero.cta.text}</div>
+                                <a href={data.hero.cta.url}>
+                                    <div className="text-cta-dot">{data.hero.cta.text}</div>
                                 </a>
                             </div>
                         </div>
@@ -106,20 +106,20 @@ export default function ScrollAnimation({ data }: AnimProps) {
 
                         <div className="awards-home">
                             <ul>
-                                {data.data.hero.awards.map((award) => {
+                                {data.hero.awards.map((award,index) => {
                                     const imageUrl = getStrapiMedia(
                                         award.image?.url
                                     );
 
                                     return (
 
-                                        <li key={award.id} className="item-awards-home" data-number={award.id}>
+                                        <li key={index} className="item-awards-home" data-number={index}>
                                             <div className="flipper-mobile" data-start_number={0}>
                                                 <div className="front-card card">
                                                     <span className="card-title">{award.title}</span>
                                                     <div className="card-content">
                                                         <p>
-                                                            {award.award}
+                                                            {award.title}
                                                             <br />
                                                             {award.description}
                                                         </p>
@@ -129,7 +129,7 @@ export default function ScrollAnimation({ data }: AnimProps) {
                                                     <span className="card-title">{award.title}</span>
                                                     <div className="card-content">
                                                         <p>
-                                                            {award.award}
+                                                            {award.title}
                                                             <br />
                                                             {award.description}
                                                         </p>
@@ -138,7 +138,7 @@ export default function ScrollAnimation({ data }: AnimProps) {
                                             </div>
                                             <div className="awards-home-list-img">
                                                 {imageUrl && (
-                                                    <Image src={imageUrl} alt={`${award.award} - ${award.description}`} width={300} height={300} />
+                                                    <Image src={imageUrl} alt={`${award.title} - ${award.description}`} width={300} height={300} />
                                                 )}
                                             </div>
                                             <div className="awards-home-list-content">
@@ -146,7 +146,7 @@ export default function ScrollAnimation({ data }: AnimProps) {
                                                     <span className="card-title">{award.title}</span>
                                                     <div className="card-content">
                                                         <p>
-                                                            {award.award}
+                                                            {award.title}
                                                             <br />
                                                             {award.description}
                                                         </p>
@@ -177,7 +177,7 @@ export default function ScrollAnimation({ data }: AnimProps) {
 
                         preload="auto"
                         muted={true}
-                        loop="loop"
+                        loop={true}
                         src="https://ghosydney.com/wp-content/uploads/2024/07/gho-reel-july-2024-1080_1.mp4"
                     />
 
@@ -336,7 +336,7 @@ export default function ScrollAnimation({ data }: AnimProps) {
                                     src="https://ghosydney.com/wp-content/uploads/2024/07/GHO-Reel-July-2023-web.mp4"
                                     width=""
                                     muted={false}
-                                    loop=""
+                                    loop={true}
                                     playsInline={true}
                                     webkit-playsinline="true"
 
@@ -371,7 +371,7 @@ export default function ScrollAnimation({ data }: AnimProps) {
                                     src="https://ghosydney.com/wp-content/uploads/2024/07/GHO-Reel-NoMusicOrTitles.mp4"
                                     width=""
                                     muted={false}
-                                    loop=""
+                                    loop={true}
                                     playsInline={true}
                                     webkit-playsinline="true"
 
@@ -402,7 +402,7 @@ export default function ScrollAnimation({ data }: AnimProps) {
                                     src="https://ghosydney.com/wp-content/uploads/2024/07/for_all_the_goals_we_share_-_cba_-_bourke-720p.mp4"
                                     width=""
                                     muted={false}
-                                    loop=""
+                                    loop={true}
                                     playsInline={true}
                                     webkit-playsinline="true"
 
@@ -556,7 +556,7 @@ export default function ScrollAnimation({ data }: AnimProps) {
                                             className="d-none wp-post-image"
                                             alt="image"
                                             decoding="async"
-                                            srcSet="https://ghosydney.com/wp-content/uploads/2023/08/Rectangle-87-e1693176992943-150x150.png 150w, https://ghosydney.com/wp-content/uploads/2023/08/Rectangle-87-e1693176992943-650x650.png 650w"
+                                            // srcSet="https://ghosydney.com/wp-content/uploads/2023/08/Rectangle-87-e1693176992943-150x150.png 150w, https://ghosydney.com/wp-content/uploads/2023/08/Rectangle-87-e1693176992943-650x650.png 650w"
                                             sizes="(max-width: 150px) 100vw, 150px"
                                         />
                                     </div>
@@ -580,11 +580,11 @@ export default function ScrollAnimation({ data }: AnimProps) {
                                             className="d-none wp-post-image"
                                             alt="image"
                                             decoding="async"
-                                            srcSet="
-                                                        https://ghosydney.com/wp-content/uploads/2023/07/CommBank-FIFA-Brand-Video-Still_1.1.26-150x150.jpg    150w,
-                                                        https://ghosydney.com/wp-content/uploads/2023/07/CommBank-FIFA-Brand-Video-Still_1.1.26-650x650.jpg    650w,
-                                                        https://ghosydney.com/wp-content/uploads/2023/07/CommBank-FIFA-Brand-Video-Still_1.1.26-1300x1300.jpg 1300w
-                                                    "
+                                            // srcSet="
+                                            //             https://ghosydney.com/wp-content/uploads/2023/07/CommBank-FIFA-Brand-Video-Still_1.1.26-150x150.jpg    150w,
+                                            //             https://ghosydney.com/wp-content/uploads/2023/07/CommBank-FIFA-Brand-Video-Still_1.1.26-650x650.jpg    650w,
+                                            //             https://ghosydney.com/wp-content/uploads/2023/07/CommBank-FIFA-Brand-Video-Still_1.1.26-1300x1300.jpg 1300w
+                                            //         "
                                             sizes="(max-width: 150px) 100vw, 150px"
                                         />
 

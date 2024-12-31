@@ -12,6 +12,7 @@ async function fetchData(url: string) {
 
     if (!authToken) throw new Error("The Strapi API Token environment variable is not set.");
 
+
     const headers = {
         method: "GET",
         headers: {
