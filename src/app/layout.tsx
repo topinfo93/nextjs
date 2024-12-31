@@ -1,61 +1,30 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./styles/main.scss";
-import { getGlobalPageMetadata } from "@/data/loaders";
+import Link from "next/link";
+import "./globals.css";
+import { Inter } from "next/font/google";
 
-import { Toaster } from "@/components/ui/sonner";
-import { Header } from "@/stories/header";
-import { Footer } from "@/stories/footer";
+const inter = Inter({ subsets: ["latin"] });
 
-import Transition from "./transition";
-// import { Inter } from "next/font/google";
+export const metadata = {
+  title: "Tech Blog",
+  description: "Your fav tech blog",
+};
 
-const geistSans = localFont({
-    src: "./fonts/GeistVF.woff",
-    variable: "--font-geist-sans",
-    weight: "100 900",
-});
-
-const geistMono = localFont({
-    src: "./fonts/GeistMonoVF.woff",
-    variable: "--font-geist-mono",
-    weight: "100 900",
-});
-
-export async function generateMetadata(): Promise<Metadata> {
-    const metadata = await getGlobalPageMetadata();
-
-    return {
-        title: metadata?.data?.title ?? "Epic Next Course",
-        description: metadata?.data?.description ?? "Epic Next Course",
-    };
-}
-
-export default async function RootLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) {
-    // const globalData = await getGlobalData();
-
-    return (
-        <html lang="en">
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased home`}>
-
-                <div id="main" role="main">
-                    <Header />
-
-                    <Toaster position="bottom-center" />
-
-                    <Transition>
-                        {children}
-                    </Transition>
-
-                    <Footer />
-
-                </div>
-
-            </body>
-        </html>
-    );
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        <div className="bg-red-400 text-white">
+          Header {"  "}
+          <Link href={"/"} className="underline">
+            Back to Home
+          </Link>
+        </div>
+        {children}
+      </body>
+    </html>
+  );
 }

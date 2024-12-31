@@ -1,19 +1,16 @@
-"use client";
-import { useEffect } from "react";
+// "use client";
 
-// app/about/page.tsx
+export const metadata = {
+  title: "About Page",
+  description: "About this blog",
+};
+
 export default function About() {
-
-    useEffect(() => {
-        document.body.classList.remove( 'dark-mode');
-        document.body.classList.remove( 'gsap-loaded');
-    }, []);
-
-
-    return (
-        <div className="section-container">
-            <h1>About Us</h1>
-            <p>Welcome to the About page of our Next.js project!</p>
-        </div>
-    );
+  console.log("About");
+  return (
+    <div>
+      <h1 className="text-3xl">About Page</h1>
+      <p>Demo App of Next.js 13 Features</p>
+    </div>
+  );
 }
