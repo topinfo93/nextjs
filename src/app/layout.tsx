@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./styles/main.scss";
-import { getGlobalPageMetadata } from "@/data/loaders";
+import { getGlobalPageMetadata,getGlobalData } from "@/data/loaders";
 
 import { Toaster } from "@/components/ui/sonner";
 import { Header } from "@/stories/Header";
@@ -36,14 +36,16 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    // const globalData = await getGlobalData();
+    const globalData = await getGlobalData();
+
+    // console.log(globalData.data);
 
     return (
         <html lang="en">
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased home`}>
 
                 <div id="main" role="main">
-                    <Header />
+                    <Header data={globalData.data.header} />
 
                     <Toaster position="bottom-center" />
 
@@ -51,7 +53,7 @@ export default async function RootLayout({
                         {children}
                     </Transition>
 
-                    <Footer />
+                    <Footer data={globalData.data.footer}/>
 
                 </div>
 

@@ -1,20 +1,28 @@
 "use client";
-// import React from 'react';
 import { useEffect, useRef, useState } from 'react';
-// import { Button } from './Button';
+import { getStrapiMedia } from "@/lib/utils";
 import './header.css';
 import Link from "next/link";
+import Image from "next/image";
+
+export interface HeaderProps {
+    data: {
+        logoImage: {
+            url: string;
+            alt: string;
+        };
+        logoText: string;
+        url: string;
+        isExternal: boolean;
+    }
+}
 
 
-
-
-
-
-export const Header = () => {
-
-
-
-
+export const Header = ({data} : HeaderProps) => {
+    const logoUrl = getStrapiMedia(
+        data.logoImage?.url
+    );
+    
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -58,13 +66,12 @@ export const Header = () => {
     }, [isOpen]); // This effect runs when `isOpen` changes
 
 
-
     const [dir, setDir] = useState("down");
     const [lastExecution, setLastExecution] = useState(0);
     const pointBanner = 200; // Example value for pointBanner
     const timeDoing = 500; // Example time for the animation
     const delay = 500; // Delay in ms
-    const sectionRef = useRef(null);
+    // const sectionRef = useRef(null);
 
 
 
@@ -130,23 +137,20 @@ export const Header = () => {
                     <div className="site-branding">
 
                         <Link
-                            href="/"
+                            href={data.url}
                             className="custom-logo-link"
+                            target={data.isExternal ? "_blank" : "_self"}
                         >
 
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
+                        {logoUrl ? (
+                            <Image
+                                src={logoUrl}
+                                alt={data.logoText}
                                 width={92}
                                 height={60}
-                                viewBox="0 0 92 60"
-                                fill="none"
-                                className="custom-logo replaced-svg"
-                            >
-                                <path
-                                    d="M75.6846 0.0239051C69.242 0.0239051 63.684 3.75315 61.0305 9.17968V0H52.9266V12.144H39.1093V0.0358585H31.0053V9.33507C30.1447 7.51825 28.9495 5.89269 27.5151 4.51812V0.0239051H16.3154C16.3035 0.0239051 16.3035 0.0239051 16.2915 0.0239051C7.29115 0.0239051 0 7.31506 0 16.3154C0 22.0049 2.91646 27.0012 7.32701 29.9176C2.91646 32.8341 0 37.8303 0 43.5198C0 52.5202 7.29115 59.8114 16.2915 59.8114C25.2919 59.8114 32.5831 52.5202 32.5831 43.5198C32.5831 37.8303 29.6666 32.8341 25.2561 29.9176C27.7303 28.2801 29.7383 25.9971 31.0173 23.2958V32.1289H39.1212V20.224H52.9505V32.1289H61.0544V23.4512C63.696 28.8658 69.2659 32.607 75.7085 32.607C84.7088 32.607 92 25.3158 92 16.3154C91.988 7.32701 84.6849 0.0239051 75.6846 0.0239051ZM16.2915 8.17565C20.7858 8.17565 24.4433 11.8212 24.4433 16.3274C24.4433 20.8216 20.7977 24.4672 16.2915 24.4672C11.7973 24.4672 8.15175 20.8216 8.15175 16.3274C8.15175 11.8212 11.7973 8.17565 16.2915 8.17565ZM16.2915 51.6716C11.7973 51.6716 8.15175 48.026 8.15175 43.5318C8.15175 39.0256 11.7973 35.38 16.2915 35.38C20.7858 35.38 24.4433 39.0256 24.4433 43.5318C24.4313 48.0379 20.7858 51.6716 16.2915 51.6716ZM75.6846 24.4672C71.1903 24.4672 67.5448 20.8216 67.5448 16.3274C67.5448 11.8212 71.1903 8.17565 75.6846 8.17565C80.1788 8.17565 83.8363 11.8212 83.8363 16.3274C83.8363 20.8216 80.1907 24.4672 75.6846 24.4672Z"
-                                    fill="white"
-                                />
-                            </svg>
+                            />
+                        ) : null} 
+
                         </Link>
 
                     </div>
@@ -184,6 +188,7 @@ export const Header = () => {
                     <div className="bg-circle-fadein" />
                     <nav className="site-navigation">
                         <div className="close-mobile-btn" onClick={() => setIsOpen(false)}>
+
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width={24}
@@ -204,12 +209,12 @@ export const Header = () => {
                                     mask="url(#path-1-inside-1_3773_12328)"
                                 />
                             </svg>
+
                         </div>
                         <div className="menu-primary-menu-container">
                             <ul id="menu-primary-menu" className="menu">
                                 <li
-                                    id="menu-item-7675"
-                                    className="menu-item menu-item-type-post_type menu-item-object-page menu-item-7675"
+                                    className="menu-item menu-item-type-post_type menu-item-object-page"
                                 >
                                     <Link
                                         href="/work"
@@ -218,13 +223,40 @@ export const Header = () => {
                                 </li>
 
                                 <li
-                                    id="menu-item-37"
-                                    className="menu-item menu-item-type-post_type menu-item-object-page menu-item-37"
+                                    className="menu-item menu-item-type-post_type menu-item-object-page"
                                 >
                                     <Link
                                         href="/about"
                                         onClick={() => setIsOpen(false)}
                                     >About</Link>
+                                </li>
+
+                                <li
+                                    className="menu-item menu-item-type-post_type menu-item-object-page"
+                                >
+                                    <Link
+                                        href="/offering"
+                                        onClick={() => setIsOpen(false)}
+                                    >Offering</Link>
+                                </li>
+
+                                <li
+                                    className="menu-item menu-item-type-post_type menu-item-object-page"
+                                >
+                                    <Link
+                                        href="/ventures"
+                                        onClick={() => setIsOpen(false)}
+                                    >Ventures</Link>
+                                </li>
+
+
+                                <li
+                                    className="menu-item menu-item-type-post_type menu-item-object-page"
+                                >
+                                    <Link
+                                        href="/contact"
+                                        onClick={() => setIsOpen(false)}
+                                    >Contact</Link>
                                 </li>
 
                             </ul>

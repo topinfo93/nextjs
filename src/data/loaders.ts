@@ -143,20 +143,47 @@ export async function getHomePageData() {
 
 }
 
+
 export async function getGlobalData() {
     const url = new URL("/api/global", baseUrl);
 
+    // const params = {
+    //     populate: {
+    //         header: {
+    //             populate: ['logoImage'],
+    //         },
+    //         footer: true,
+    //     },
+    // };
+
     url.search = qs.stringify({
-        populate: [
-            "header.logoText",
-            "header.ctaButton",
-            "footer.logoText",
-            "footer.socialLink",
-        ],
+        populate: {
+            header: {
+                populate: {
+                    logoImage:  {
+                        populate: '*'
+                    }
+                }
+            },
+            footer: {
+                populate: {
+                    logoText:  {
+                        populate: '*'
+                    },
+                    socialLinks:  {
+                        populate: '*'
+                    },
+                    footerMenu:  {
+                        populate: '*'
+                    }
+                }
+            }
+        }
     });
 
     return await fetchData(url.href);
 }
+
 
 export async function getGlobalPageMetadata() {
     const url = new URL("/api/global", baseUrl);

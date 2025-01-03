@@ -4,14 +4,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ScrollAnimation, AnimProps } from "./ScrollAnimation";
 
 
-// const meta = {
-//     title: 'Example/ScrollAnimation',
-//     component: ScrollAnimation,
-//     tags: ['autodocs'],
-//     parameters: {
-//         layout: 'fullscreen',
-//     },
-// } satisfies Meta<typeof ScrollAnimation>;
 
 const meta: Meta<typeof ScrollAnimation> = {
     title: "Example/ScrollAnimation",
@@ -33,8 +25,8 @@ const homeVideo = `http://localhost:3000/gho-reel-july-2024-1080_1.mp4`;
 
 const defaultData: AnimProps = {
     data: {
-        title: "Sample Title",
-        description: "Sample Description",
+        // title: "Sample Title",
+        // description: "Sample Description",
         id: 1,
         hero: {
             id: 1,
@@ -71,13 +63,13 @@ const defaultData: AnimProps = {
             },
             gallery: [
                 {
-                    url: 'https://ghosydney.com/wp-content/uploads/2024/07/Frame-55.png',
+                    url: '/Frame-55.png',
                 },
                 {
-                    url: 'https://ghosydney.com/wp-content/uploads/2024/07/Frame-55.png',
+                    url: '/Frame-55.png',
                 },
                 {
-                    url: 'https://ghosydney.com/wp-content/uploads/2024/07/Frame-55.png',
+                    url: '/Frame-55.png',
                 },
             ],
             deliverTitle: 'How we deliver change',

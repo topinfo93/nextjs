@@ -24,9 +24,26 @@ const defaultData: PartnerProps = {
         cta: {
             text: 'Get in touch',
             isExternal: false,
-            url: '222',
+            url: '#',
         },
-        imageText: [],
+        imageText: [
+            {
+                title: 'DEFINING YOUR MOST VALUABLE FUTURE',
+                description: 'Unlike consultancies that value endless reports, we’re focussed on connecting insight and action at speed. With a strategic approach centred on feasibility, viability and desirability we ensure your future state vision becomes a future state reality.',
+                image: {
+                    url: '/demo.mp4',
+                    alt: 'image',
+                }
+            },
+            {
+                title: 'DEFINING YOUR MOST VALUABLE FUTURE',
+                description: 'Unlike consultancies that value endless reports, we’re focussed on connecting insight and action at speed. With a strategic approach centred on feasibility, viability and desirability we ensure your future state vision becomes a future state reality.',
+                image: {
+                    url: '/demo.mp4',
+                    alt: 'image',
+                }
+            },
+        ],
     },
 };
 

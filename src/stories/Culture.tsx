@@ -4,15 +4,6 @@
 import Image from "next/image";
 import { getStrapiMedia } from "@/lib/utils";
 
-// interface Box {
-//     title: string;
-//     description: string;
-//     image: {
-//         url: string;
-//         alt: string;
-//     };
-// }
-
 
 export interface CultureProps {
     data: {

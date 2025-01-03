@@ -20,16 +20,16 @@ type Story = StoryObj<typeof meta>;
 
 const defaultData: CultureProps = {
     data: {
-        title: "",
-        description: "",
+        title: "Change is in our DNA",
+        description: "Our culture of work with people you like is pervasive and has been key to our resilience and evolution. It embodies family while celebrating individuality. It sings true internally and is reflected externally in how we work",
         cta: {
-            text: 'Get in touch',
+            text: 'About us',
             isExternal: false,
             url: '#',
         },
         image: {
-            url: '#',
-            alt: '',
+            url: '/demo.gif',
+            alt: 'image',
         },
     },
 };

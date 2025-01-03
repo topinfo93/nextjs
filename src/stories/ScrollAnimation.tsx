@@ -1,5 +1,5 @@
 "use client";
-
+import './global.css';
 import React, { useEffect } from "react";
 import Image from "next/image";
 import { getStrapiMedia } from "@/lib/utils";
@@ -15,8 +15,6 @@ interface Award {
 
 export interface AnimProps {
     data: {
-        title: string;
-        description: string;
         id: number,
         hero: {
             id: number,
@@ -47,12 +45,13 @@ export interface AnimProps {
 
 export const ScrollAnimation = ({ data }: AnimProps) => {
 
-
     if (!data) {
-        return <div>Error: Data is missing or invalid.</div>;
+        return (<></>);
     }
-    // const videoUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL || ''}${data.animation.video.url}`;
-    const videoUrl = data.animation.video.url;
+
+    const videoUrl = getStrapiMedia(
+        data.animation.video?.url
+    );
 
     const gallery = data.animation.gallery;
 
@@ -113,11 +112,6 @@ export const ScrollAnimation = ({ data }: AnimProps) => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []); // Empty dependency array ensures this effect runs only once when the component mounts
-
-
-
-
-
 
 
     return (
@@ -241,17 +235,20 @@ export const ScrollAnimation = ({ data }: AnimProps) => {
 
             <div className="section-intro section-intro-two">
                 <div className="big-cirle section-animation">
-                    <video
-                        id="video1"
-                        className="video-circle"
-                        playsInline={true}
-                        webkit-playsinline="true"
 
-                        preload="auto"
-                        muted={true}
-                        loop={true}
-                        src={videoUrl}
-                    />
+
+                    {videoUrl && (
+                        <video
+                            id="video1"
+                            className="video-circle"
+                            playsInline={true}
+                            webkit-playsinline="true"
+                            preload="auto"
+                            muted={true}
+                            loop={true}
+                            src={videoUrl}
+                        />
+                    )}
 
 
                     <div className="text-below-video-scale">

@@ -2006,6 +2006,17 @@ body.menu-mobile-circle-running #site-header .site-navigation .small-circle svg 
   -webkit-backface-visibility: hidden;
   -webkit-transform: translate3d(0, 0, 0);
 }
+@media (min-width: 1401px) {
+  .bg-circle-fadein {
+    display: none;
+  }
+}
+
+#storybook-docs .innerZoomElementWrapper .section-intro-two{
+  max-height: 150px;
+  overflow: hidden;
+  min-height: auto;
+}
 
 body.menu-mobile-bg-circle .bg-circle-fadein {
   scale: 13;

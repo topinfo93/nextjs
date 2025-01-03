@@ -20,14 +20,52 @@ type Story = StoryObj<typeof meta>;
 
 const defaultData: CaseStudiesProps = {
     data: {
-        title: "",
-        description: "",
+        title: "Change is in our DNA",
+        description: "Our culture of work with people you like is pervasive and has been key to our resilience and evolution. It embodies family while celebrating individuality. It sings true internally and is reflected externally in how we work",
         cta: {
-            text: 'Get in touch',
+            text: 'View more work',
             isExternal: false,
             url: '#',
         },
-        imageText: [],
+        cases: [
+            {
+                title: '',
+                description: '',
+                url: '#',
+                image: {
+                    url: '/case1.png',
+                    alt: 'image',
+                }
+            },
+            {
+                title: '',
+                description: '',
+                url: '#',
+                image: {
+                    url: '/case1.png',
+                    alt: 'image',
+                }
+            },
+            {
+                title: '',
+                description: '',
+                url: '#',
+                image: {
+                    url: '/case1.png',
+                    alt: 'image',
+                }
+            },
+            {
+                title: '',
+                description: '',
+                url: '#',
+                image: {
+                    url: '/case1.png',
+                    alt: 'image',
+                }
+            },
+            
+        ],
     },
 };
 

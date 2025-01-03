@@ -5,7 +5,29 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+// export function isStorybookEnvironment(): boolean {
+//   return typeof window !== 'undefined' && !!window.__STORYBOOK_CLIENT_API__;
+// }
+
+// export function isNextJsEnvironment(): boolean {
+//   return !isStorybookEnvironment();
+// }
+
+export function isStorybookEnvironment(): boolean {
+  // If `process.browser` is not defined, and Storybook global exists
+  return typeof process !== 'undefined' && process.env.STORYBOOK === 'true';
+}
+
+export function isNextJsEnvironment(): boolean {
+  return typeof process !== 'undefined' && process.browser === true;
+}
+
+
+
 export function getStrapiURL() {
+  if(isStorybookEnvironment()){
+    return process.env.NEXT_PUBLIC_BASE_PATH ?? "http://localhost:3000";
+  }
   return process.env.NEXT_PUBLIC_STRAPI_URL ?? "http://localhost:1337";
 }
 

@@ -34,15 +34,12 @@ export const Partner = ({ data }: PartnerProps) => {
         return <div>Error: Data is missing or invalid.</div>;
     }
 
-    // appear animation 
-    // const [classNames, setClassNames] = useState({});
     const [classNames, setClassNames] = useState<{ [key: number]: string }>({});
 
     useEffect(() => {
         
         const handleScroll = () => {
             const rightContents = document.querySelectorAll(".md-txt-vid .right-content");
-            // const updatedClasses = {};
 
             const updatedClasses: { [key: number]: string } = {};
 
@@ -156,9 +153,6 @@ export const Partner = ({ data }: PartnerProps) => {
 
                     <div className="section-modules" >
                         {data.imageText.map((section, index) => {
-                            // const videoUrl = getStrapiMedia(
-                            //     section.image?.url
-                            // );
                             const videoUrl = getStrapiMedia(section.image?.url) || ''; // Fallback to an empty string if null
 
 

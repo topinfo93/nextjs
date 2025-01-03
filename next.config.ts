@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
-    domains: ['ghosydney.com', 'anotherdomain.com','special-friends-d47d50ea86.strapiapp.com','strapiapp.com','special-friends-d47d50ea86.media.strapiapp.com'],
+    domains: ['ghosydney.com','localhost', 'anotherdomain.com','special-friends-d47d50ea86.strapiapp.com','strapiapp.com','special-friends-d47d50ea86.media.strapiapp.com'],
   },
 };
 
