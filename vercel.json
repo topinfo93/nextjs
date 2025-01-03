@@ -1,5 +1,8 @@
 {
-  "rewrites": [
-    { "source": "/storybook/(.*)", "destination": "/storybook-static/$1" }
+  "routes": [
+    {
+      "src": "/storybook/(.*)",
+      "dest": "/storybook-static/$1"
+    }
   ]
 }
