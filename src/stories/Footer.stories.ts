@@ -107,14 +107,14 @@ export const Default: Story = {
             ],
             socialLinks: [
                 {
-                    linkText: 'Linked in',
+                    text: 'Linked in',
                     isExternal: false,
-                    url: '#',
+                    link: '#',
                 },
                 {
-                    linkText: 'INSTAGRAM',
+                    text: 'INSTAGRAM',
                     isExternal: false,
-                    url: '#',
+                    link: '#',
                 }
             ]
         }
