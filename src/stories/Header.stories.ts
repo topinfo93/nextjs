@@ -26,6 +26,7 @@ export const Default: Story = {
                 url: '/logo.svg', 
                 alt: 'Example Logo',
             },
+            isExternal: false,
             logoText: 'Logo',
             url: '/',
         }
