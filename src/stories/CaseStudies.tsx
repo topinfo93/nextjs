@@ -137,7 +137,7 @@ export const CaseStudies = ({ data }: CaseStudiesProps) => {
 
                                 return (
                                     <div key={index} className="card before-cards">
-                                        <a href={card.url}>
+                                        <a href="#">
                                             <div
                                                 className="card-inner"
                                                 style={{

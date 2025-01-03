@@ -7,6 +7,7 @@ export default function Offering() {
     useEffect(() => {
         document.body.classList.remove( 'dark-mode');
         document.body.classList.remove( 'gsap-loaded');
+        document.body.classList.remove( 'hide-logo');
     }, []);
 
 

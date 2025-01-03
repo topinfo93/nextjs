@@ -737,7 +737,7 @@ Fundstream is distributed under the terms of the GNU GPL.
 .section-your-partner {
   background: #000;
   padding-top: 137px;
-  margin-top: -1px;
+  margin-top: -2px;
 }
 @media (max-width: 480px) {
   .section-your-partner {
