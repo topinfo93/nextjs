@@ -3,7 +3,7 @@
 // import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { getStrapiMedia } from "@/lib/utils";
-
+import '../app/styles/main.scss';
 
 export interface CultureProps {
     data: {
@@ -42,10 +42,10 @@ export const Culture = ({ data }: CultureProps) => {
                     {imageUrl ? (
                         <div className="img-wrap">
                                 <Image
-                                    src="https://ghosydney.com/wp-content/uploads/2024/07/a1fa308e908cc3179aab93a51f2b5403.gif"
+                                    src= {imageUrl}
                                     alt="image"
-                                    width={300}
-                                    height={300}
+                                    width={968}
+                                    height={544}
                                 />
                         </div>
                     ) : null} 

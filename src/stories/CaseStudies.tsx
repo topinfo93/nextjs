@@ -1,5 +1,5 @@
 "use client";
-import './global.css';
+import '../app/styles/main.scss';
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { getStrapiMedia } from "@/lib/utils";

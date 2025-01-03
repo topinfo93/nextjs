@@ -1,8 +1,4 @@
 import { getHomePageData } from "@/data/loaders";
-// import { useEffect, useRef, useState } from "react";
-
-// import { HeroSection } from "@/components/custom/hero-section";
-// import { FeatureSection } from "@/components/custom/features-section";
 import { ScrollAnimation } from "@/stories/ScrollAnimation";
 import { Partner } from "@/stories/Partner";
 import { CaseStudies } from "@/stories/CaseStudies";
@@ -10,7 +6,6 @@ import { CaseStudies } from "@/stories/CaseStudies";
 import { Culture } from "@/stories/Culture";
 
 import Script from "next/script";
-// import ScrollAnimation from "@/components/custom/ScrollAnimation";
 export default async function Home() {
     const homeData = await getHomePageData();
 

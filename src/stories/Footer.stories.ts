@@ -71,7 +71,7 @@ export const Default: Story = {
                 url: '/',
                 isExternal: false,
                 logoImage: {
-                    url: '/logo.svg',
+                    url: '/logo-black.svg',
                     alt: 'Example Logo',
                 },
                 linkText: 'logo',

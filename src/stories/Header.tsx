@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from 'react';
 import { getStrapiMedia } from "@/lib/utils";
-import './header.css';
+import '../app/styles/main.scss';
 import Link from "next/link";
 import Image from "next/image";
 
@@ -145,7 +145,7 @@ export const Header = ({data} : HeaderProps) => {
                         {logoUrl ? (
                             <Image
                                 src={logoUrl}
-                                alt={data.logoText}
+                                alt="logo"
                                 width={92}
                                 height={60}
                             />

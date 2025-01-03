@@ -170,6 +170,9 @@ export async function getGlobalData() {
                     logoText:  {
                         populate: '*'
                     },
+                    footerCTA:  {
+                        populate: '*'
+                    },
                     socialLinks:  {
                         populate: '*'
                     },

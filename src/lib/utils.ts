@@ -26,7 +26,7 @@ export function isNextJsEnvironment(): boolean {
 
 export function getStrapiURL() {
   if(isStorybookEnvironment()){
-    return process.env.NEXT_PUBLIC_BASE_PATH ?? "http://localhost:3000";
+    return process.env.STORYBOOK_PUBLIC_BASE_PATH ?? "http://localhost:6006";
   }
   return process.env.NEXT_PUBLIC_STRAPI_URL ?? "http://localhost:1337";
 }

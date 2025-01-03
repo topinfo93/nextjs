@@ -1,5 +1,5 @@
 "use client";
-import './global.css';
+import '../app/styles/main.scss';
 import React, { useEffect } from "react";
 import Image from "next/image";
 import { getStrapiMedia } from "@/lib/utils";
@@ -263,6 +263,12 @@ export const ScrollAnimation = ({ data }: AnimProps) => {
                                 const imageUrl = getStrapiMedia(
                                     image?.url
                                 );
+
+                                const alt = getStrapiMedia(
+                                    image?.url
+                                );
+                                
+
                                 if (!imageUrl) {
                                     return null; 
                                 }
@@ -271,7 +277,7 @@ export const ScrollAnimation = ({ data }: AnimProps) => {
                                     <li key={index} className={index % 2 === 0 ? 'right' : 'left'}>
                                         <Image
                                             src={imageUrl}
-                                            alt={image.alt}
+                                            alt={image.alt || "img"}
                                             width={300}
                                             height={300}
                                         />

@@ -1,5 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/storybook/(.*)", "destination": "/storybook-static/$1" }
-  ]
-}
