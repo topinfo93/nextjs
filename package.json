@@ -7,9 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build --output-dir ./public/storybook-static"
+    "storybook": "start-storybook -p 6006",  
+    "build-storybook": "build-storybook -o storybook-static",  
+    "vercel-build": "next build && npm run build-storybook" 
   },
+
   "dependencies": {
     "@axe-core/react": "^4.10.1",
     "@langchain/core": "^0.3.24",
